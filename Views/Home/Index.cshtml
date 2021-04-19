@@ -1,0 +1,148 @@
+﻿@model IEnumerable<VMMVC.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div style="vertical-align:central; text-align:center;">
+        <h1>
+            @ViewBag.Message
+        </h1>
+    </div>
+   
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Список товаров</h2>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rest)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rest)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("КУПИТЬ", "BuyProduct", new { id = item.Id })
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div style="min-height:80px">
+                <h2>Внесенная сумма</h2>
+            </div>
+           
+            <div>
+
+                @ViewBag.Debt
+
+                @Html.ActionLink("Вернуть сдачу", "Change", new { }, new { @style = "padding: 12px 28px; border: 1px solid blue; border-radius:4px; box-shadow: 5px 3px 6px 0px black; " })
+
+            </div>
+               
+
+           
+        </div>
+
+        <div class="col-md-4">
+            <div style="min-height:80px">
+                <h2>Внесите деньги</h2>
+            </div>
+            
+            <table class="table">
+                <tr>
+                    <th>
+                        <h5 style="font-weight:bold;">Монеты</h5>
+                    </th>
+                    <th>
+                        <h5 style="font-weight:bold;">Нажмите, чтобы внести</h5>
+                    </th>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <h>10 Рублей</h>
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Внести", "Pay_10", new { }) |
+
+                    </td>
+                    <td>
+                        <h>@ViewBag.M10</h>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h>5 Рублей</h>
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Внести", "Pay_5", new { }) |
+
+                    </td>
+                    <td>
+                        <h>@ViewBag.M5</h>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h>2 Рубля</h>
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Внести", "Pay_2", new { }) |
+
+                    </td>
+                    <td>
+                        <h>@ViewBag.M2</h>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h>1 Рубль</h>
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Внести", "Pay_1", new { }) |
+
+                    </td>
+                    <td>
+                        <h>@ViewBag.M1</h>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
